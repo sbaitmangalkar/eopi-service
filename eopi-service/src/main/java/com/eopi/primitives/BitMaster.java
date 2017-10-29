@@ -1,5 +1,10 @@
 package com.eopi.primitives;
 
+/**
+ * 
+ * @author Shyam | catch.shyambaitmangalkar@gmail.com
+ *
+ */
 public class BitMaster {
 
 	/**
@@ -75,6 +80,8 @@ public class BitMaster {
 	}
 
 	/**
+	 * Swap bits
+	 * 
 	 * Extract ith and jth bit. Check if they are different. If different, flip
 	 * them.
 	 *
@@ -95,6 +102,7 @@ public class BitMaster {
 	}
 
 	/**
+	 * Reverse bits of gien number.
 	 * 
 	 * @param n
 	 * @return
@@ -107,6 +115,8 @@ public class BitMaster {
 	}
 
 	/**
+	 * Find a closest integer of the given integer with same weight.
+	 * 
 	 * Start from LSB. Swap LSB with its rightmost bit that differs from it.
 	 * 
 	 * Solution: Flip bits at k1 and k2 where k1 > k2. Then difference between
@@ -136,6 +146,8 @@ public class BitMaster {
 	}
 
 	/**
+	 * Multiply two numbers without using any operators.
+	 * 
 	 * Logic: Initialize result to 0. Iterate through bits of x, add 2^k of y to
 	 * result if kth bit of y is 1
 	 * 
@@ -174,6 +186,15 @@ public class BitMaster {
 		return result;
 	}
 
+	/**
+	 * Logic: Digit at LSB can be obtained by (number mod 10).
+	 * Remaining digits of the number are (number / 10).
+	 * So result = (result * 10 + number % 10) on every iteration.
+	 *  
+	 * Time Complexity = O(n)
+	 * @param x
+	 * @return
+	 */
 	public long reverse(long x) {
 		long result = 0;
 		long absoluteX = Math.abs(x);
@@ -183,6 +204,33 @@ public class BitMaster {
 		}
 
 		return x < 0 ? -result : result;
+	}
+	
+	/**
+	 * Logic: If LSB of y is 0, result is [x pow (y / 2)] pow 2.
+	 * Else result is x * [x pow (y / 2)] pow 2
+	 * If y is 0, change x to 1 / x and y to -y.
+	 * 
+	 * Time Complexity = O(n)
+	 * @param x
+	 * @param y
+	 * @return
+	 */
+	public long power(long x, long y) {
+		long result = 1;
+		long power = y;
+		if(y < 0) {
+			power = -power;
+			x = 1 / x;
+		}
+		while(power != 0) {
+			if((power & 1) != 0) {
+				result = result * x;
+			}
+			x = x * x;
+			power = power >>> 1;
+		}
+		return result;
 	}
 
 	public static void main(String[] args) {
@@ -210,6 +258,9 @@ public class BitMaster {
 
 		long rev = bitMaster.reverse(-24);
 		System.out.println("Reversed " + rev);
+		
+		long power = bitMaster.power(2, 2);
+		System.out.println("Power " + power);
 	}
 
 }
