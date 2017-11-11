@@ -2,6 +2,11 @@ package com.eopi.arrays;
 
 import java.util.Arrays;
 
+/**
+ * 
+ * @author Shyam | catch.shyambaitmangalkar@gmail.com
+ *
+ */
 public class ArrayMaster {
 	/**
 	 * Given an array of integers, group all
