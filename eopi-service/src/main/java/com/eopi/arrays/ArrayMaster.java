@@ -96,6 +96,28 @@ public class ArrayMaster {
 		}
 		return arr;
 	}
+	
+	/**
+	 * Given a sorted array, delete duplicates out of it
+	 * without using extra space.
+	 * 
+	 * Time complexity = O(n)
+	 * @param a
+	 * @return
+	 */
+	public static int removeDuplicates(int[] a) {
+		int j = 0;
+		
+        for (int i = 0; i < a.length - 1; i++)
+            if (a[i] != a[i+1])
+                a[j++] = a[i];
+      
+        a[j++] = a[a.length - 1];
+		
+        return j;
+	} 
+	
+	
 	@SuppressWarnings("rawtypes")
 	public static void main(String[] args) {
 		int[] oddEven = oddEven(new int[] {2,3,4,5,6,7,8,9});
@@ -107,5 +129,8 @@ public class ArrayMaster {
 		Comparable[] dutchFlag = new Comparable[] {4,9,4,4,1,9,4,4,9,4,4,1,4};
 		dutchNationalFlagSort(dutchFlag, 0, dutchFlag.length - 1);
 		System.out.println(Arrays.toString(dutchFlag));
+		
+		int modifiesCountAfterRemovingDups = removeDuplicates(new int[] {1, 2, 2, 3, 4, 4, 4, 5, 5});
+		System.out.println(modifiesCountAfterRemovingDups);
 	}
 }
