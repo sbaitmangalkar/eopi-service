@@ -102,7 +102,7 @@ public class BitMaster {
 	}
 
 	/**
-	 * Reverse bits of gien number.
+	 * Reverse bits of given number.
 	 * 
 	 * @param n
 	 * @return
